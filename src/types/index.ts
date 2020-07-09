@@ -3,7 +3,7 @@
  * @Version: 0.0.1
  * @Author: HarryXiong
  * @Date: 2020-07-06 16:14:45
- * @LastEditTime: 2020-07-06 20:07:27
+ * @LastEditTime: 2020-07-09 21:46:07
  */
 
 export type Method =
@@ -27,4 +27,5 @@ export interface AxiosRequestConfig {
   method?: Method
   data?: any
   params?: any
+  headers?: any
 }

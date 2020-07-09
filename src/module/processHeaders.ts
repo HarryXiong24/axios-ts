@@ -1,4 +1,4 @@
-import { isObject } from './util'
+import { isPlainObject } from './util'
 
 /**
  * @name: normalizeHeaderName
@@ -31,7 +31,7 @@ function normalizeHeaderName(headers: any, normalizeHeaderName: string): void {
 export default function processHeaders(headers: any, data: any) {
   normalizeHeaderName(headers, 'Content-Type')
 
-  if (isObject(data)) {
+  if (isPlainObject(data)) {
     if (headers && !headers['Content-Type']) {
       headers['Content-Type'] = 'application/json; charset=utf-8'
     }
