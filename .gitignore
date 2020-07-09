@@ -9,4 +9,7 @@ dist
 compiled
 .awcache
 .rpt2_cache
-docs
+docs/node_modules/
+docs/.idea/
+docs/.DS_Store
+temp
