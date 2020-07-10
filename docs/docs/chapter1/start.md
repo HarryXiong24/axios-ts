@@ -1,12 +1,9 @@
-# itjc8.com收集整理
-
 # 编写第一个 TypeScript 程序
 
 在编辑器，将下面的代码输入到 greeter.ts 文件里：
 
-
 ```javascript
-function greeter (person) {
+function greeter(person) {
   return 'Hello, ' + person
 }
 
@@ -41,10 +38,10 @@ Hello, Yee
 
 ## 类型注解
 
-接下来让我们看看 TypeScript 工具带来的高级功能。 给  `person` 函数的参数添加 `: string` 类型注解，如下：
+接下来让我们看看 TypeScript 工具带来的高级功能。 给 `person` 函数的参数添加 `: string` 类型注解，如下：
 
 ```typescript
-function greeter (person: string) {
+function greeter(person: string) {
   return 'Hello, ' + person
 }
 
@@ -56,7 +53,7 @@ console.log(greeter(user))
 TypeScript 里的类型注解是一种轻量级的为函数或变量添加约束的方式。 在这个例子里，我们希望 `greeter` 函数接收一个字符串参数。 然后尝试把 `greeter` 的调用改成传入一个数组：
 
 ```typescript
-function greeter (person: string) {
+function greeter(person: string) {
   return 'Hello, ' + person
 }
 
@@ -71,7 +68,7 @@ console.log(greeter(user))
 error TS2345: Argument of type 'number[]' is not assignable to parameter of type 'string'.
 ```
 
-类似地，尝试删除 `greeter` 调用的所有参数。 TypeScript 会告诉你使用了非期望个数的参数调用了这个函数。 在这两种情况中，TypeScript提供了静态的代码分析，它可以分析代码结构和提供的类型注解。
+类似地，尝试删除 `greeter` 调用的所有参数。 TypeScript 会告诉你使用了非期望个数的参数调用了这个函数。 在这两种情况中，TypeScript 提供了静态的代码分析，它可以分析代码结构和提供的类型注解。
 
 要注意的是尽管有错误，`greeter.js` 文件还是被创建了。 就算你的代码里有错误，你仍然可以使用 TypeScript。但在这种情况下，TypeScript 会警告你代码可能不会按预期执行。
 
@@ -85,7 +82,7 @@ interface Person {
   lastName: string
 }
 
-function greeter (person: Person) {
+function greeter(person: Person) {
   return 'Hello, ' + person.firstName + ' ' + person.lastName
 }
 
@@ -111,7 +108,7 @@ class User {
   firstName: string
   lastName: string
 
-  constructor (firstName: string, lastName: string) {
+  constructor(firstName: string, lastName: string) {
     this.firstName = firstName
     this.lastName = lastName
     this.fullName = firstName + ' ' + lastName
@@ -123,7 +120,7 @@ interface Person {
   lastName: string
 }
 
-function greeter (person: Person) {
+function greeter(person: Person) {
   return 'Hello, ' + person.firstName + ' ' + person.lastName
 }
 
@@ -137,7 +134,3 @@ console.log(greeter(user))
 ## 总结
 
 到这里，你已经对 TypeScript 有了一个大致的印象，那么下一章让我们来一起学习 TypeScript 的一些常用语法吧。
-
-
-
-

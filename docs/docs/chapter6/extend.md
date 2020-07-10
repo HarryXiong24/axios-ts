@@ -1,5 +1,3 @@
-# itjc8.com收集整理
-
 # 扩展接口
 
 ## 需求分析
@@ -61,7 +59,6 @@ export interface AxiosRequestConfig {
   url?: string
   // ...
 }
-
 ```
 
 首先定义一个 `Axios` 类型接口，它描述了 `Axios` 类中的公共方法，接着定义了 `AxiosInstance` 接口继承 `Axios`，它就是一个混合类型的接口。
@@ -230,7 +227,7 @@ export default axios
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Extend example</title>
   </head>
   <body>

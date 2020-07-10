@@ -1,5 +1,3 @@
-# itjc8.com收集整理
-
 # axios 函数重载
 
 ## 需求分析
@@ -63,7 +61,7 @@ export interface AxiosInstance extends Axios {
     }
     return dispatchRequest(config)
   }
-``` 
+```
 
 我们把 `request` 函数的参数改成 2 个，`url` 和 `config` 都是 `any` 类型，`config` 还是可选参数。
 
