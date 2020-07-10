@@ -3,11 +3,15 @@ import xhr from './xhr'
 import { buildURL } from './module/buildURL'
 import { transformRequest } from './module/transformData'
 import processHeaders from './module/processHeaders'
-import { AxiosPromise } from './types/AxiosResponse'
+import { AxiosPromise, AxiosResponse } from './types/AxiosResponse'
+import { processData } from './module/processData'
 
 function axios(config: AxiosRequestConfig): AxiosPromise {
   processConfig(config)
-  return xhr(config)
+  return xhr(config).then(res => {
+    res = transformResponseData(res)
+    return res
+  })
 }
 
 // 处理url的函数
@@ -32,6 +36,12 @@ function processConfig(config: AxiosRequestConfig): void {
   config.url = transformUrl(config)
   config.data = transformRequestData(config)
   config.headers = transformHeaders(config)
+}
+
+// 处理返回的data数据
+function transformResponseData(res: AxiosResponse): AxiosResponse {
+  res.data = processData(res.data)
+  return res
 }
 
 export default axios
