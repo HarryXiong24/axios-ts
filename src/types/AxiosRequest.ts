@@ -3,24 +3,10 @@
  * @Version: 0.0.1
  * @Author: HarryXiong
  * @Date: 2020-07-06 16:14:45
- * @LastEditTime: 2020-07-09 21:46:07
+ * @LastEditTime: 2020-07-10 16:03:27
  */
 
-export type Method =
-  | 'GET'
-  | 'get'
-  | 'POST'
-  | 'post'
-  | 'DELETE'
-  | 'delete'
-  | 'OPTIONS'
-  | 'options'
-  | 'HEAD'
-  | 'head'
-  | 'PUT'
-  | 'put'
-  | 'PATCH'
-  | 'patch'
+import { Method } from './method'
 
 export interface AxiosRequestConfig {
   url: string
@@ -28,4 +14,5 @@ export interface AxiosRequestConfig {
   data?: any
   params?: any
   headers?: any
+  responseType?: XMLHttpRequestResponseType
 }

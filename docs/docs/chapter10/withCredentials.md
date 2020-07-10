@@ -1,5 +1,3 @@
-# itjc8.com收集整理
-
 # withCredentials
 
 ## 需求分析

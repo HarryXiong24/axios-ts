@@ -1,4 +1,3 @@
-# itjc8.com收集整理
 # 编写基础请求代码
 
 我们这节课开始编写 `ts-axios` 库，我们的目标是实现简单的发送请求功能，即客户端通过 `XMLHttpRequest` 对象把请求发送到 server 端，server 端能收到请求并响应即可。

@@ -1,5 +1,3 @@
-# itjc8.com收集整理
-
 # 扩展 axios.create 静态接口
 
 ## 需求分析
