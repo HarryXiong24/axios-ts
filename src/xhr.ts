@@ -24,15 +24,18 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
     // 使用open连接服务器
     request.open(method.toUpperCase(), url, true)
 
-    // 设置请求头，setRequestHeader()方法要求键-值类型，下面为构造
-    Object.keys(headers).forEach(name => {
-      // 通过processHeaders模块统一处理过了，所以删除重复的
-      if (data === null && name.toLowerCase() === 'content-type') {
-        delete headers[name]
-      } else {
-        request.setRequestHeader(name, headers[name])
-      }
-    })
+    // headers要不为空才可以进行设置
+    if (headers) {
+      // 设置请求头，setRequestHeader()方法要求键-值类型，下面为构造
+      Object.keys(headers).forEach(name => {
+        // 通过processHeaders模块统一处理过了，所以删除重复的
+        if (data === null && name.toLowerCase() === 'content-type') {
+          delete headers[name]
+        } else {
+          request.setRequestHeader(name, headers[name])
+        }
+      })
+    }
 
     // 发送数据
     request.send(data)

@@ -1,4 +1,3 @@
-import { Method } from './method'
 import { AxiosRequestConfig } from './AxiosRequest'
 
 export interface AxiosResponse {
