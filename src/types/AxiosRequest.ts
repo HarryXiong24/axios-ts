@@ -3,7 +3,7 @@
  * @Version: 0.0.1
  * @Author: HarryXiong
  * @Date: 2020-07-06 16:14:45
- * @LastEditTime: 2020-07-10 16:03:27
+ * @LastEditTime: 2020-07-11 21:24:38
  */
 
 import { Method } from './method'
@@ -15,4 +15,5 @@ export interface AxiosRequestConfig {
   params?: any
   headers?: any
   responseType?: XMLHttpRequestResponseType
+  timeout?: number
 }
