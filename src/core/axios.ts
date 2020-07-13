@@ -9,7 +9,16 @@ import { Method } from '../types/method'
  * 创建一个 Axios 类，来实现接口定义的公共方法。
  */
 export default class Axios {
-  request(config: AxiosRequestConfig): AxiosPromise {
+  // 支持axios传1-2个参数
+  request(url: any, config?: any): AxiosPromise {
+    if (typeof url === 'string') {
+      if (!config) {
+        config = {}
+      }
+      config.url = url
+    } else {
+      config = url
+    }
     return dispatchRequest(config)
   }
 
