@@ -1,8 +1,7 @@
-import { AxiosRequestConfig } from './types/AxiosRequest'
-import { AxiosPromise, AxiosResponse } from './types/AxiosResponse'
-import parseHeaders from './module/praseHeaders'
-import { rejects } from 'assert'
-import { createError } from './module/error'
+import { AxiosRequestConfig } from '../types/AxiosRequest'
+import { AxiosPromise, AxiosResponse } from '../types/AxiosResponse'
+import parseHeaders from '../module/praseHeaders'
+import { createError } from '../module/error'
 
 /**
  * @name: xhr

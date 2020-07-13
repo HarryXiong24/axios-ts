@@ -1,4 +1,4 @@
-import axios from './axios'
+import axios from './core/axios'
 
 export * from './types/AxiosError'
 export * from './types/AxiosRequest'
