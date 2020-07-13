@@ -9,7 +9,7 @@
 import { Method } from './method'
 
 export interface AxiosRequestConfig {
-  url: string
+  url?: string
   method?: Method
   data?: any
   params?: any
