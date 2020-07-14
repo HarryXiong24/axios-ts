@@ -1,47 +1,46 @@
-import { AxiosRequestConfig } from '../types/AxiosRequest'
-import { AxiosPromise, AxiosResponse } from '../types/AxiosResponse'
-import { buildURL } from '../module/buildURL'
-import { transformRequest } from '../module/transformData'
+import { AxiosPromise, AxiosRequestConfig, AxiosResponse } from '../types'
 import xhr from './xhr'
-import processHeaders from '../module/processHeaders'
-import { processData } from '../module/processData'
+import { buildURL, isAbsoluteURL, combineURL } from '../modules/url'
+import { flattenHeaders } from '../modules/headers'
+import transform from './transform'
 
-function axios(config: AxiosRequestConfig): AxiosPromise {
+export default function dispatchRequest(config: AxiosRequestConfig): AxiosPromise {
+  throwIfCancellationRequested(config)
   processConfig(config)
-  return xhr(config).then(res => {
-    res = transformResponseData(res)
-    return res
-  })
+  return xhr(config).then(
+    res => {
+      return transformResponseData(res)
+    },
+    e => {
+      if (e && e.response) {
+        e.response = transformResponseData(e.response)
+      }
+      return Promise.reject(e)
+    }
+  )
 }
 
-// 处理url的函数
-function transformUrl(config: AxiosRequestConfig): string {
-  const { url, params } = config
-  return buildURL(url, params)
-}
-
-// 处理data的函数
-function transformRequestData(config: AxiosRequestConfig): any {
-  return transformRequest(config.data)
-}
-
-// 处理headers的函数
-function transformHeaders(config: AxiosRequestConfig) {
-  const { headers = {}, data } = config
-  return processHeaders(headers, data)
-}
-
-// 汇总，最后处理config的函数
 function processConfig(config: AxiosRequestConfig): void {
-  config.url = transformUrl(config)
-  config.data = transformRequestData(config)
-  config.headers = transformHeaders(config)
+  config.url = transformURL(config)
+  config.data = transform(config.data, config.headers, config.transformRequest)
+  config.headers = flattenHeaders(config.headers, config.method!)
 }
 
-// 处理返回的data数据
+export function transformURL(config: AxiosRequestConfig): string {
+  let { url, params, paramsSerializer, baseURL } = config
+  if (baseURL && !isAbsoluteURL(url!)) {
+    url = combineURL(baseURL, url)
+  }
+  return buildURL(url!, params, paramsSerializer)
+}
+
 function transformResponseData(res: AxiosResponse): AxiosResponse {
-  res.data = processData(res.data)
+  res.data = transform(res.data, res.headers, res.config.transformResponse)
   return res
 }
 
-export default axios
+function throwIfCancellationRequested(config: AxiosRequestConfig): void {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested()
+  }
+}
